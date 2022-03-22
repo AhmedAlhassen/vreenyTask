@@ -9,11 +9,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsToMany(models.User, {
+        through: "user_order",
+        foreignKey: "orderId",
+        otherKey: "userId",
+        onDelete: "NO ACTION",
+      });
+      this.belongsToMany(models.OrderItems, {
+        through: "order_order_items",
+        foreignKey: "orderId",
+        otherKey: "orderItemsId",
+        onDelete: "NO ACTION",
+      });
     }
   }
   Order.init(
     {
-      orderItemsId: DataTypes.INTEGER,
       shippingAddress1: DataTypes.STRING,
       shippingAddress2: DataTypes.STRING,
       city: DataTypes.STRING,

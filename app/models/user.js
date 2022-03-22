@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "roleId",
         onDelete: "NO ACTION",
       });
+      this.belongsToMany(models.Order, {
+        through: "user_order",
+        foreignKey: "userId",
+        otherKey: "orderId",
+        onDelete: "NO ACTION",
+      });
     }
   }
   User.init(
