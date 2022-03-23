@@ -1,20 +1,21 @@
 const ProductController = require("../../app/controllers/api/product-controller");
 const { auth } = require("../../app/middleware/auth");
+const OrderItemController = require("../../app/controllers/api/orderItems-controller");
 module.exports = {
   group: {
-    prefix: "/product",
+    prefix: "/orderItems",
     middleware: [auth],
   },
   routes: [
     {
       method: "get",
       path: "/",
-      handler: ProductController.index,
+      handler: OrderItemController.index,
     },
     {
       method: "post",
       path: "/",
-      handler: ProductController.create,
+      handler: OrderItemController.create,
     },
   ],
 };

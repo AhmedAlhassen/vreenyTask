@@ -1,47 +1,43 @@
-const ModelNotFoundException = require('../exceptions/model-not-found-exception')
+const ModelNotFoundException = require("../exceptions/model-not-found-exception");
 
 class BaseRepository {
-    constructor(model) {
-        this.model = model
-    }
+  constructor(model) {
+    this.model = model;
+  }
 
-    async findById(id) {
-        return await this.model.findOne({
-            where: {
-                id
-            }
-        })
-    }
+  async findById(id) {
+    return await this.model.findOne({
+      where: {
+        id,
+      },
+    });
+  }
 
-    async findBy({ column, value }) {
-        const where = {}
-        where[column] = value
+  async findBy({ column, value }) {
+    const where = {};
+    where[column] = value;
 
-        const record = await this.model.findOne({
-            where
-        })
+    const record = await this.model.findOne({
+      where,
+    });
 
-        if (!record)
-            throw new ModelNotFoundException(this.model.name.toLowerCase())
+    if (!record)
+      throw new ModelNotFoundException(this.model.name.toLowerCase());
 
-        return record
-    }
+    return record;
+  }
 
-    async getAll() {
+  async getAll() {
+    return this.model.findAll();
+  }
 
-    }
+  async create(data) {
+    return this.model.create(data);
+  }
 
-    async create(data) {
-        return this.model.create(data)
-    }
+  async update() {}
 
-    async update() {
-
-    }
-
-    async destroy() {
-
-    }
+  async destroy() {}
 }
 
-module.exports = BaseRepository
+module.exports = BaseRepository;

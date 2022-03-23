@@ -46,6 +46,7 @@ module.exports = {
           onUpdate: "NO ACTION",
         },
       },
+
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,
