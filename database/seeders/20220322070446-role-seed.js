@@ -1,5 +1,6 @@
 "use strict";
 const { Role } = require("../../app/models");
+const { User } = require("../../app/models");
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
