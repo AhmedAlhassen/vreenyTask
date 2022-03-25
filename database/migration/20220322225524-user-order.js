@@ -9,7 +9,7 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      *
      */
-    await queryInterface.createTable("product_order_items", {
+    await queryInterface.createTable("user_order", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -30,7 +30,7 @@ module.exports = {
           onUpdate: "NO ACTION",
         },
       },
-      order_items_id: {
+      order_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

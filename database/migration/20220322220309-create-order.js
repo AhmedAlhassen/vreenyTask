@@ -8,37 +8,35 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      OrderItemsId: {
-        type: Sequelize.INTEGER,
-      },
-      ShippingAddress1: {
+
+      shipping_address1: {
         type: Sequelize.STRING,
       },
-      ShippingAddress2: {
+      shipping_address2: {
         type: Sequelize.STRING,
       },
-      City: {
+      city: {
         type: Sequelize.STRING,
       },
-      Phone: {
+      phone: {
         type: Sequelize.STRING,
       },
-      Lat: {
+      lat: {
         type: Sequelize.STRING,
       },
-      Long: {
+      long: {
         type: Sequelize.STRING,
       },
-      UserId: {
-        type: Sequelize.INTEGER,
-      },
-      createdAt: {
+
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()"),
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()"),
       },
     });
   },

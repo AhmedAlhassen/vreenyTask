@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "dc9c6224-8ae7-4f14-b2b8-42bb1fdc129c",
+		"name": "vreeny task",
+		"description": "endpoints for vreeny assigment ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sign in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"john.doe@egmail.com\",\r\n    \"password\":\"secret\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"ahmed\",\r\n    \"lastName\":\"ahmed\",\r\n    \"email\":\"ahmed@mail.com\",\r\n    \"password\":\"Edb@12354\",\r\n    \"roles\":[\"admin\",\"user\"]\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "create new User"
+			},
+			"response": []
+		},
+		{
+			"name": "refresh token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\":\"bdf033036418277808cd48ca7cd64541d6ddc43646cb3e6eb17c0c62812a738d4f2b025f3b62cfdc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/refreshtoken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"refreshtoken"
+					]
+				},
+				"description": "get new accsess token"
+			},
+			"response": []
+		},
+		{
+			"name": "add product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUBlZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiaWF0IjoxNjQ4MjM3MTk1LCJleHAiOjE2NDgyNDA3OTV9.7XVnFj8Jern9lhmuw_U3HtXRElI_xZuo1hxxxHGtBLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test\",\r\n      \"description\":\"test\",\r\n      \"imageUrl\":\"test\",\r\n      \"price\":200,\r\n      \"brand\":\"p1\",\r\n      \"countInStock\":100,\r\n      \"isFeatured\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"product"
+					]
+				},
+				"description": "pass the request body and the accsess token as autherization header"
+			},
+			"response": []
+		},
+		{
+			"name": "List All product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUBlZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiaWF0IjoxNjQ4MjM3MTk1LCJleHAiOjE2NDgyNDA3OTV9.7XVnFj8Jern9lhmuw_U3HtXRElI_xZuo1hxxxHGtBLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"product"
+					]
+				},
+				"description": "pass the access token as authrization header Barer"
+			},
+			"response": []
+		},
+		{
+			"name": "add Oreder item (cart)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUBlZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiaWF0IjoxNjQ4MjM3MTk1LCJleHAiOjE2NDgyNDA3OTV9.7XVnFj8Jern9lhmuw_U3HtXRElI_xZuo1hxxxHGtBLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \r\n\"productId\":1,\r\n\"quantity\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/orderItems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orderItems"
+					]
+				},
+				"description": "add order item  , pass the request body and the barer autherization header"
+			},
+			"response": []
+		},
+		{
+			"name": "list all Order items ",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUBlZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiaWF0IjoxNjQ4MjM3MTk1LCJleHAiOjE2NDgyNDA3OTV9.7XVnFj8Jern9lhmuw_U3HtXRElI_xZuo1hxxxHGtBLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/orderItems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orderItems"
+					]
+				},
+				"description": "pass the request body and the barer token as autherization header\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "new order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUBlZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiaWF0IjoxNjQ4MjM3MTk1LCJleHAiOjE2NDgyNDA3OTV9.7XVnFj8Jern9lhmuw_U3HtXRElI_xZuo1hxxxHGtBLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shippingAddress1\":\"address 1\",\r\n    \"shippingAddress2\":\"address 2\",\r\n    \"city\":\"khartoum\",\r\n    \"phone\":\"0999009092\",\r\n    \"lat\":\"124896654\",\r\n    \"long\":\"-54855\",\r\n    \"orderItems\":[1,2]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"order"
+					]
+				},
+				"description": "pass order items id's from cart + order data and barer access token as auteriztion header"
+			},
+			"response": []
+		},
+		{
+			"name": "list all order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huLmRvZUBlZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiaWF0IjoxNjQ4MjM3MTk1LCJleHAiOjE2NDgyNDA3OTV9.7XVnFj8Jern9lhmuw_U3HtXRElI_xZuo1hxxxHGtBLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"order"
+					]
+				},
+				"description": "pass barer access token as auth header"
+			},
+			"response": []
+		}
+	]
+}
